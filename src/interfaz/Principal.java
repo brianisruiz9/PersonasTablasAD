@@ -63,6 +63,11 @@ public class Principal extends javax.swing.JFrame {
         mnOpciones.add(jSeparator1);
 
         mnSalir.setText("Salir");
+        mnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSalirActionPerformed(evt);
+            }
+        });
         mnOpciones.add(mnSalir);
 
         jMenuBar1.add(mnOpciones);
@@ -82,7 +87,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(700, 461));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -90,6 +95,11 @@ public class Principal extends javax.swing.JFrame {
         Agregar a = new Agregar(this,true);
         a.setVisible(true);
     }//GEN-LAST:event_mnAgregarActionPerformed
+
+    private void mnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSalirActionPerformed
+     
+      System.exit(0);
+    }//GEN-LAST:event_mnSalirActionPerformed
 
     /**
      * @param args the command line arguments
