@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
+
+import clases.Helper;
 
 /**
  *
@@ -15,8 +16,11 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    String ruta;
+
     public Principal() {
         initComponents();
+        ruta = "src/datos/personas.txt";
     }
 
     /**
@@ -29,16 +33,28 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu2 = new javax.swing.JMenu();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lblImagen = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mnOpciones = new javax.swing.JMenu();
         mnAgregar = new javax.swing.JMenuItem();
-        mnReportes = new javax.swing.JMenuItem();
+        mnReportes = new javax.swing.JMenu();
+        mnListados = new javax.swing.JMenu();
+        mnListadoPersonas = new javax.swing.JMenuItem();
+        mnListadoSexo = new javax.swing.JMenuItem();
+        mnCantidades = new javax.swing.JMenu();
+        mnCantidadPersonas = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnSalir = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PERSONAS");
@@ -59,6 +75,39 @@ public class Principal extends javax.swing.JFrame {
         mnOpciones.add(mnAgregar);
 
         mnReportes.setText("Reportes");
+
+        mnListados.setText("Listados");
+
+        mnListadoPersonas.setText("Listado de Personas");
+        mnListadoPersonas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoPersonasActionPerformed(evt);
+            }
+        });
+        mnListados.add(mnListadoPersonas);
+
+        mnListadoSexo.setText("Listado por Sexo");
+        mnListadoSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnListadoSexoActionPerformed(evt);
+            }
+        });
+        mnListados.add(mnListadoSexo);
+
+        mnReportes.add(mnListados);
+
+        mnCantidades.setText("Cantidades");
+
+        mnCantidadPersonas.setText("Cantidad de Personas Ingresadas");
+        mnCantidadPersonas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCantidadPersonasActionPerformed(evt);
+            }
+        });
+        mnCantidades.add(mnCantidadPersonas);
+
+        mnReportes.add(mnCantidades);
+
         mnOpciones.add(mnReportes);
         mnOpciones.add(jSeparator1);
 
@@ -92,14 +141,30 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAgregarActionPerformed
-        Agregar a = new Agregar(this,true);
+        Agregar a = new Agregar(this, true);
         a.setVisible(true);
     }//GEN-LAST:event_mnAgregarActionPerformed
 
     private void mnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSalirActionPerformed
-     
-      System.exit(0);
+
+        System.exit(0);
     }//GEN-LAST:event_mnSalirActionPerformed
+
+    private void mnListadoPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoPersonasActionPerformed
+        ListadoCompleto lc = new ListadoCompleto(this, true);
+        lc.setVisible(true);
+    }//GEN-LAST:event_mnListadoPersonasActionPerformed
+
+    private void mnListadoSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnListadoSexoActionPerformed
+        ListadoPorSexo lps = new ListadoPorSexo(this, true);
+        lps.setVisible(true);
+    }//GEN-LAST:event_mnListadoSexoActionPerformed
+
+    private void mnCantidadPersonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCantidadPersonasActionPerformed
+        int cont;
+        cont = Helper.traerDatos(ruta).size();
+        Helper.mensaje(this, "El número de personas ingresadas es: " + cont, 1);
+    }//GEN-LAST:event_mnCantidadPersonasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,7 +193,7 @@ public class Principal extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and displaymnListadosorm */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
@@ -139,12 +204,20 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JMenuItem mnAgregar;
+    private javax.swing.JMenuItem mnCantidadPersonas;
+    private javax.swing.JMenu mnCantidades;
+    private javax.swing.JMenuItem mnListadoPersonas;
+    private javax.swing.JMenuItem mnListadoSexo;
+    private javax.swing.JMenu mnListados;
     private javax.swing.JMenu mnOpciones;
-    private javax.swing.JMenuItem mnReportes;
+    private javax.swing.JMenu mnReportes;
     private javax.swing.JMenuItem mnSalir;
     // End of variables declaration//GEN-END:variables
 }
